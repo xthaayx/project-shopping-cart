@@ -1,4 +1,5 @@
-const coisa2 = document.querySelector('.items');
+const item = document.querySelector('.items');
+const cartItem = document.querySelector('.cart__items');
 
 function createProductImageElement(imageSource) {
   const img = document.createElement('img');
@@ -50,10 +51,15 @@ const createProducts = async () => {
       name: resultado.title,
       image: resultado.thumbnail,
     };
-    console.log(product);
-    coisa2.appendChild(createProductItemElement(product));
+    // console.log(product);
+    item.appendChild(createProductItemElement(product));
   });
 };
 createProducts();
+
+// const addProduct = async () => {
+//   const fetch = await fetchItem('itemID');
+// };
+// addProduct();
 
 window.onload = () => { };
