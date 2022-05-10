@@ -1,9 +1,15 @@
 const itemLista = document.querySelector('.items');
 const cartItem = document.querySelector('.cart__items');
+const buttonEmpty = document.querySelector('.empty-cart');
 
 function getSkuFromProductItem(item) {
   return item.querySelector('span.item__sku').innerText;
 }
+// 6-
+buttonEmpty.addEventListener('click', () => {
+  cartItem.innerHTML = '';
+  saveCartItems(cartItem.innerHTML);
+});
 
 function cartItemClickListener(event) {
   // coloque seu código aqui
@@ -12,11 +18,7 @@ function cartItemClickListener(event) {
 }
 // 4-
 const saveItem = () => {
-  // if (localStorage.cartItems === undefined) {
-  //   cartItem.innerHTML = '';
-  // }
   cartItem.innerHTML = getSavedCartItems();
-  // console.log(getSavedCartItems());
   const liCartItem = document.querySelectorAll('.cart__item');
   liCartItem.forEach((item) => item.addEventListener('click', cartItemClickListener));
 };
