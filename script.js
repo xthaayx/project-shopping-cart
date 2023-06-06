@@ -5,18 +5,17 @@ const buttonEmpty = document.querySelector('.empty-cart');
 function getSkuFromProductItem(item) {
   return item.querySelector('span.item__sku').innerText;
 }
-// 6-
+
 buttonEmpty.addEventListener('click', () => {
   cartItem.innerHTML = '';
   saveCartItems(cartItem.innerHTML);
 });
 
 function cartItemClickListener(event) {
-  // coloque seu código aqui
   event.target.remove(); // 3-
   saveCartItems(cartItem.innerHTML);
 }
-// 4-
+
 const saveItem = () => {
   cartItem.innerHTML = getSavedCartItems();
   const liCartItem = document.querySelectorAll('.cart__item');
@@ -36,14 +35,14 @@ function createCustomElement(element, className, innerText) {
   e.innerText = innerText;
   return e;
 }
-function createCartItemElement({ id: sku, title: name, price: salePrice }) {
+function createCartItemElement({ title: name, price: salePrice }) {
   const li = document.createElement('li');
   li.className = 'cart__item';
-  li.innerText = `SKU: ${sku} | NAME: ${name} | PRICE: $${salePrice}`;
+  li.innerText = `NAME: ${name} | PRICE: $${salePrice}`;
   li.addEventListener('click', cartItemClickListener);
   return li;
 }
-// 2-
+
 const addProduct = async (event) => {
   const idSku = getSkuFromProductItem(event.target.parentNode);
   const itemId = await fetchItem(idSku);
@@ -56,16 +55,15 @@ function createProductItemElement({ sku, name, image }) {
   section.className = 'item';
 
   section.appendChild(createCustomElement('span', 'item__sku', sku));
-  section.appendChild(createCustomElement('span', 'item__title', name));
   section.appendChild(createProductImageElement(image));
-  // section.appendChild(createCustomElement('button', 'item__add', 'Adicionar ao carrinho!'));
+  section.appendChild(createCustomElement('span', 'item__title', name));
 
   const button = createCustomElement('button', 'item__add', 'Adicionar ao carrinho!');
   button.addEventListener('click', addProduct);
   section.appendChild(button);
   return section;
 }
-// 1-
+
 const createProducts = async () => {
   const fetch = await fetchProducts('computador');
     fetch.results.forEach((resultado) => {
@@ -74,7 +72,7 @@ const createProducts = async () => {
       name: resultado.title,
       image: resultado.thumbnail,
     };
-    // console.log(product);
+    
     itemLista.appendChild(createProductItemElement(product));
   });
 };

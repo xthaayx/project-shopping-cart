@@ -119,10 +119,10 @@ body {
 }
 
 .item .item__add {
-  background-color: rgb(5, 52, 219);
+  background-color: rgb(10, 118, 79);
   border: 0;
   cursor: pointer;
-  margin: 0;
+  margin: 10px;
   padding: 10px;
   color: white;
 }
@@ -144,6 +144,6 @@ body {
   width: 170px;
   height: 35px;
   margin: 0 auto;
-  border: 2px solid rgb(5, 52, 219);
+  border: 2px solid rgb(10, 118, 79);
   background-color: rgb(249, 249, 246);
 }
